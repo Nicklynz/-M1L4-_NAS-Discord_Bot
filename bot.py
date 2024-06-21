@@ -13,7 +13,7 @@ async def on_ready():
 
 @bot.command()
 async def hello(ctx):
-    await ctx.send(f'Hi! I am a bot {bot.user}!')
+    await ctx.send(f'Hi! I am a bot {bot.user}! Type /help for a list of commands!')
 
 @bot.command()
 async def heh(ctx, count_heh = 5):
@@ -40,5 +40,16 @@ async def add(ctx, left: int, right: int):
 async def ask_bot(ctx):
     """Is the bot cool?"""
     await ctx.send('Yes, the bot is cool. \U0001F60E')
+
+@bot.command()
+async def help(ctx):
+    await ctx.send('''Commands (Prefix = "/") :\n\n
+                   hello (Greets the user)\n
+                   heh (Repeats the word heh, 5 times by default or can be set manually by typing a number after the command)\n
+                   password (Generates a random password)\n
+                   gen_emoji (Generates a random emoji)\n
+                   coin_flip (Does a coin toss, will return either HEADS or TAILS)\n
+                   add (Adds two numbers together, type the numbers after the command with spaces inbetween, i.e /add 1 1)\n
+                   ask_bot (Asks the bot if its cool or not)''')
 
 bot.run("TOKEN HERE")
