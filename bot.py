@@ -42,6 +42,13 @@ async def ask_bot(ctx):
     await ctx.send('Yes, the bot is cool. \U0001F60E')
 
 @bot.command()
+async def meme(ctx):
+    mem = random.randint(1, 3)
+    with open(f'images/meme_{mem}.jpg', 'rb') as f:
+        picture = discord.File(f)
+    await ctx.send(file=picture)
+
+@bot.command()
 async def help(ctx):
     await ctx.send('''Commands (Prefix = "/") :\n\n
                    hello (Greets the user)\n
@@ -50,6 +57,7 @@ async def help(ctx):
                    gen_emoji (Generates a random emoji)\n
                    coin_flip (Does a coin toss, will return either HEADS or TAILS)\n
                    add (Adds two numbers together, type the numbers after the command with spaces inbetween, i.e /add 1 1)\n
-                   ask_bot (Asks the bot if its cool or not)''')
+                   ask_bot (Asks the bot if its cool or not)
+                   meme (Generates a random meme, currently only 3 memes are available)''')
 
 bot.run("TOKEN HERE")
