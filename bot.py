@@ -1,6 +1,7 @@
 import discord
 from discord.ext import commands
 from bot_logic import *
+import os
 
 intents = discord.Intents.default()
 intents.message_content = True
@@ -43,8 +44,8 @@ async def ask_bot(ctx):
 
 @bot.command()
 async def meme(ctx):
-    mem = random.randint(1, 3)
-    with open(f'images/meme_{mem}.jpg', 'rb') as f:
+    mem = random.choice(os.listdir('images'))
+    with open(f'images/meme_{mem}', 'rb') as f:
         picture = discord.File(f)
     await ctx.send(file=picture)
 
